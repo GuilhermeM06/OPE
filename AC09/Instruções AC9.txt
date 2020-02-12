@@ -1,0 +1,55 @@
+AC9 - Instruções para Realização desta AC
+
+
+Esta AC é composta de uma parte, referente ao último conjunto dos artefatos que devem ser gerados para a OPE. Como nas AC anteriores que envolvem a OPE,
+a entrega deve ser feita apenas pelo responsável pelo grupo. Lembrando que todas atividades referentes à OPE devem sempre indicar os membros do grupo e o tema escolhido.
+
+Ainda referente aos artefatos a serem entregues, você está recebendo o template dos documentos que devem ser elaborados nesta atividade.
+Utilize como base os documentos correspondentes do LMS, que já foram disponibilizados nas Unidades anteriores. Abaixo segue
+a relação dos artefatos da OPE que devem ser contemplados nesta entrega, com uma breve explicação dos mesmos.
+
+
+Relação de artefatos da OPE para a AC9:
+
+XX. Evidência de Realização do Workshop de Características: fotografia do mural com os post-its, feitos no Workshop.
+
+12. Lista de Características: esta lista é o resultado do Workshop de Características que normalmente é realizado com o cliente e os principais 
+stakeholders. É a transcrição dos post-its gerados no Workshop. Por observação, o tipo de solução presente nos temas possui em torno de 200 características mapeanas inicialmente.
+Após o processo de redução e organização (veja o material "TAKAI-ER-AMS-07-Workshop de Caracteristicas.pptx"), temos em torno de 50 a 70 características em lista.
+
+
+Artefato-exemplo: "12. Lista de Características  (Prioridade X Esforço X Risco X Baseline) LMS.docx"
+
+Arquivo: "Template Lista de Características (Descr Características).docx"
+
+
+13. Lista de Características Priorizada: utilizar a lista do artefato anterior e adicionar as colunas Criticidade, Esforço e Risco.
+
+Feito isso, é necessário atribuir a prioridade, o esforço e o risco (cada um como uma coluna com valores específicos). Basta agora ordenar por Prioridade para 
+determinarmos qual a Baseline 1; no contexto da Engenharia Reversa corresponderá ao mínimo que a solução precisa ter para cumprir o seu propósito (um MVP). Este
+conjunto de características imprescindíveis chamamos de Baseline.
+
+Artefato-exemplo: "13. Lista de Características  (Prioridade X Esforço X Risco X Baseline) LMS.docx"
+
+Arquivo: "Template Lista de Características  (Prioridade X Esforço X Risco X Baseline).docx"
+
+
+14. Matriz de Rastreabilidade: este é o último artefato. É exatamente o encontro da Lista de Necessidades e a Lista dde Caracterísitcas.
+Neste artefato é preciso relacionar inicialmente as necessidades levantadas no artefato "Lista de Necessidades" (textualmente igual!).
+Na tabela, indique exatamente como na Lista de Características o número e o descritivo das mesmas; por fim, relacione à qual necessidade
+a característica está relacionada. Caso uma característica não se enquadre a uma necessidade, ela deve ser descartada pois não tem relação com a
+solução a ser construída.
+Este artefato indica como um alteração de característica ou de necessidade tem impacto dos demais pontos que são considerados para construir a 
+solução, fornecendo uma visão adequada para gerenciarmos alterações no escopo. 
+
+Artefato-exemplo: "14. Matriz de Rastreabilidade (Necessidades x Características) LMS"
+
+Arquivo: "Template Matriz de Rastreabilidade (Necessidades x Características).docx"
+
+
+Caso tenha alguma dúvida ou deseje informações adicionais, peço que entre em contato via e-mail: fabio.campos@faculdadeimpacta.com.br
+
+
+Estou à disposição!
+
+Att.
