@@ -1,0 +1,28 @@
+/* CSS Document */
+
+.jumbotron{
+    width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+
+.table{
+    margin-top: 15px;
+}
+
+.form-control{
+    margin: 10px auto;
+    width: 300px;
+
+}
+
+.selected{
+    background: #f36073c2;
+    font-weight: bold;
+}
+
+.bottom{
+    text-align: center;
+}

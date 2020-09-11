@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Customer_Registration">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="angular/angular_6/angular.js"></script>
+    <script src="/angular/angular_6/i18n/angular-locale_pt-br.js"></script>
+    <script>
+
+        angular.module("Customer_Registration", []);
+        angular.module("Customer_Registration").controller("Customer_RegistrationCTRL", 
+        
+        function($scope) {
+            $scope.message="Cadastro de Clientes";
+            $scope.clients=[];
+
+            $scope.typeClients = [
+            {tipo: "Pessoa Fisica", codigo: "01", local: "Nacional"},
+            {tipo: "Pessoa Juridica", codigo: "02", local: "Nacional"},
+            {tipo: "Sócio", codigo: "03", local: "Nacional"},
+            {tipo: "Exportador", codigo: "04", local: "Internacional"},
+            {tipo: "Importador", codigo: "05", local: "Internacional"}
+            ];
+
+            $scope.adicionarCliente = function(client) {
+                $scope.clients.push(angular.copy(client));
+                delete $scope.client;
+
+            };
+
+            $scope.apagarCliente = function(clients) {
+                $scope.clients = clients.filter(function(client) {
+                    if (!client.selected) return client;
+
+                })
+            };
+
+            $scope.temClienteSelecionado = function(clients) {
+                return clients.some(function (client){
+                    return client.selected;
+                })
+            };
+
+            $scope.class1 = "selected";
+        })
+
+    </script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap_4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Cliente</title>
+</head>
+<body ng-controller="Customer_RegistrationCTRL">
+    <div class="jumbotron">
+        <h3 ng-bind="message"></h3>
+       <input type="text" class="form-control" ng-model="buscar" placeholder="Filtrar">
+        <table ng-show="clients.length > 0" class="table">
+            <tr>
+                <td></td>
+                <td><b>Nome</b></td>
+                <td><b>CPF</b></td>
+                <td><b>Tipo</b></td>
+                <td><b>Valor</b></td>
+            </tr>
+            <tr ng-class="{selected: client.selected}" ng-repeat="client in clients | filter: buscar ">
+                <td><input type="checkbox" ng-model="client.selected"></td>
+                <td>{{client.nome | uppercase}}</td>
+                <td>{{client.cpf}}</td>
+                <td>{{client.typeClients.tipo}}</td>
+                <td>{{client.valor | currency}}</td>
+            </tr>
+        </table>
+        <hr>
+        <form name="clientsForm">
+        <input class="form-control" type="text" ng-model="client.nome" placeholder="Nome" ng-required="true">
+        <!-- Aqui estamos fazendo com que as infromações passadas nesse campo sejam inclusas em "nome" dentro de $scope.clients -->
+        <input class="form-control" type="text" ng-model="client.cpf" placeholder="CPF" ng-required="true">
+        <select class="form-control" ng-model="client.typeClients" ng-options="typeClient.tipo group by typeClient.local for typeClient in typeClients" ng-required="true">
+            <option value="">Selecione um tipo de Cliente</option>
+
+        </select>
+        <input class="form-control" type="text" ng-model="client.valor" placeholder="Valor" ng-required="true">
+        </form>
+        <button class="btn-primary btn-block" ng-click="adicionarCliente(client)" ng-disabled="clientsForm.$invalid">Adicionar Cliente</button>
+
+        <button class="btn-block btn-danger" ng-click="apagarCliente(clients)" ng-if="temClienteSelecionado(clients)">Apagar Cliente</button>
+    </div>
+
+    <div class="bottom">
+        <h5>Cicloview</h5>
+    </div>
+</body>
+</html>

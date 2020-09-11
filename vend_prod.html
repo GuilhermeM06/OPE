@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Product_Sales">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="angular/angular_6/angular.js"></script>
+    <script src="/angular/angular_6/i18n/angular-locale_pt-br.js"></script>
+    <script>
+
+        angular.module("Product_Sales", []);
+        angular.module("Product_Sales").controller("Product_SalesCTRL", 
+        
+        function($scope) {
+            $scope.message="Venda de Produtos";
+            $scope.products=[
+                {nome:"RODA", marca: "BICI", codbar: "123456789", valor: 123},
+                {nome:"BANCO", marca: "BICI", codbar: "12345345", valor: 123},
+                {nome:"CORRENTE", marca: "BICI", codbar: "123456455", valor: 123},
+                {nome:"RODA", marca: "BICI", codbar: "1234123", valor: 123},
+                {nome:"RODA", marca: "BICI", codbar: "1234765", valor: 123},
+                {nome:"RODA", marca: "BICI", codbar: "123452345", valor: 123},
+                {nome:"RODA", marca: "BICI", codbar: "1234654", valor: 123},
+                {nome:"RODA", marca: "BICI", codbar: "12345543", valor: 123}
+                
+
+            ];
+
+            $scope.sellproducts= [
+            ];
+
+            $scope.typeProducts = [
+            {tipo: "Venda", codigo: "01"},
+            {tipo: "Estoque", codigo: "02"},
+            ];
+
+            $scope.adicionarProduto = function(product) {
+                $scope.products.push(angular.copy(product));
+                delete $scope.product;
+
+            };
+
+            
+
+            $scope.venderProduto = function(products) {
+                $scope.products = products.filter(function(product) {
+                    if (product.selected) {
+                        $scope.sellproducts.push(angular.copy(product))
+                    };
+                    if (!product.selected) {
+                        return product
+                    }
+
+                })
+            };
+
+            $scope.apagarProduto = function(products) {
+                $scope.products = products.filter(function(product) {
+                    if (!product.selected) return product;
+
+                })
+            };
+
+            $scope.temProdutoSelecionado = function(products) {
+                return products.some(function (product){
+                    return product.selected;
+                })
+            };
+
+
+            $scope.class1 = "selected";
+        })
+
+    </script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap_4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="style2.css">
+    <title>Cadastro de Produtos</title>
+</head>
+<body ng-controller="Product_SalesCTRL">
+    
+    <div class="jumbotron">
+
+        <h3 ng-bind="message"></h3>
+       <input type="text" class="form-control" ng-model="buscar" placeholder="Filtrar">
+        <table ng-show="products.length > 0" class="table">
+            <tr>
+                <td></td>
+                <td><b>Nome</b></td>
+                <td><b>Marca</b></td>
+                <td><b>Código de Barras</b></td>
+                <td><b>Valor</b></td>
+            </tr>
+            <tr ng-class="{selected: product.selected}" ng-repeat="product in products | filter: buscar ">
+                <td><input type="checkbox" ng-model="product.selected"></td>
+                <td>{{product.nome | uppercase}}</td>
+                <td>{{product.marca | uppercase}}</td>
+                <td>{{product.codbar}}</td>
+                <td>{{product.valor | currency}}</td>
+                <td>{{product.typeProducts.tipo}}</td>
+            </tr>
+        </table>
+        <button class="btn-block btn-danger" ng-click="venderProduto(products)" ng-if="temProdutoSelecionado(products)">Incluir em Pedidoo</button>
+        
+
+
+    </div>
+
+    </div>
+
+    <div class="jumbotron">
+        <h3 ng-bind="message"></h3>
+       <input type="text" class="form-control" ng-model="buscar" placeholder="Filtrar">
+        <table ng-show="sellproducts.length > 0" class="table">
+            <tr>
+                <td></td>
+                <td><b>Nome</b></td>
+                <td><b>Marca</b></td>
+                <td><b>Código de Barras</b></td>
+                <td><b>Valor</b></td>
+            </tr>
+            <tr ng-class="{selected: product.selected}" ng-repeat="product in sellproducts | filter: buscar ">
+                <td><input type="checkbox" ng-model="product.selected"></td>
+                <td>{{product.nome | uppercase}}</td>
+                <td>{{product.marca | uppercase}}</td>
+                <td>{{product.codbar}}</td>
+                <td>{{product.valor | currency}}</td>
+                <td>{{product.typeProducts.tipo}}</td>
+            </tr>
+        </table>
+        <hr>
+        <form name="ProductsForm">
+        <input class="form-control" type="text" ng-model="product.nome" placeholder="Nome" ng-required="true">
+        <input class="form-control" type="text" ng-model="product.marca" placeholder="Marca" ng-required="true">
+        <!-- Aqui estamos fazendo com que as infromações passadas nesse campo sejam inclusas em "nome" dentro de $scope.clients -->
+        <input class="form-control" type="text" ng-model="product.codbar" placeholder="Código de Barras" ng-required="true">
+        <input class="form-control" type="text" ng-model="product.valor" placeholder="Valor" ng-required="true">
+        <select class="form-control" ng-model="product.typeProducts" ng-options="typeProduct.tipo for typeProduct in typeProducts" ng-required="true">
+            <option value="">Selecione um tipo de Produto</option>
+
+        </select>
+        </form>
+        <button class="btn-block btn-danger" ng-click="apagarProduto(sellproducts)" ng-if="temProdutoSelecionado(sellproducts)">Apagar Produto</button>
+        
+
+    </div>
+
+    <div class="bottom">
+        <h5>Cicloview</h5>
+    </div>
+    
+
+</body>
+</html>
